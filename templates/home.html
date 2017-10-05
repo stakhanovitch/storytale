@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <div class="container col-md-8 col-xs-12">
+    <h1>Storytale</h1>
+    <p>...</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+  </div>
+  {% comment %}
+    <div class="container col-md-4 col-xs-12">
+      <form action="." method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" value="Submit" class="btn btn-success">
+      </form>
+      social sign-up
+      <a class="btn btn-primary"  onclick="window.open('{% provider_login_url 'facebook'  process='login' %}', 'newwindow', 'width=500,height=450'); return false;">Sign-up facebook</a>
+    </div>
+  {% endcomment %}
+  </div>
+</div>
+{% endblock content %}

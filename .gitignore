@@ -1,0 +1,9 @@
+.DS_Store
+.ven
+*.pyc
+.Python
+*.db
+env/*
+.env/*
+*.orig
+.cache

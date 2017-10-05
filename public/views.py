@@ -1,0 +1,34 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+from django.views.generic.base import TemplateView
+from allauth.account.views import SignupView
+from django.shortcuts import render
+from django.shortcuts import render
+
+from django.http import HttpResponse, JsonResponse
+from models import Subscribe
+from utils import SendSubscribeMail
+
+
+# Create your views here.
+
+class HomePageView(SignupView):
+    """
+    website homepage with signup capability
+    """
+    template_name = "home.html"
+
+class ThankYouView(TemplateView):
+    template_name = "thankyou.html"
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST['email_id']
+        email_qs = Subscribe.objects.filter(email_id = email)
+        if email_qs.exists():
+            data = {"status" : "404"}
+            return JsonResponse(data)
+        else:
+            Subscribe.objects.create(email_id = email)
+            SendSubscribeMail(email) # Send the Mail, Class available in utils.py
+    return HttpResponse("/")

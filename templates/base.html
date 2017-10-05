@@ -1,0 +1,118 @@
+{% load i18n static %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  {% load staticfiles %}
+  {# global custom css files #}
+    <link href="{{ STATIC_URL }} static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }} static/css/bootstrap-social.css" rel="stylesheet">
+
+  {% block extrastyle %}
+    {# Load the extra css files #}
+  {% endblock %}
+
+  {% block blockbots %}
+  {% endblock %}
+  {% load bootstrap3 %}
+
+  {# Load CSS and JavaScript #}
+  {% bootstrap_javascript %}
+
+  {# Display django.contrib.messages as Bootstrap alerts #}
+  {% bootstrap_messages %}
+  <title>Storytale</title>
+</head>
+<body>
+  <div>
+    {% block menu %}
+    {% endblock %}
+  </div>
+  <div>
+        {% block content %}
+        hello
+        {% endblock content %}
+  </div>
+  <div id = "footer">
+    {% block footer %}
+    <div class = "subscribe_form">
+    <p>Sign up for our newsletter to get latest updates</p>
+    <form id = "subscribe" form method = 'POST'>{% csrf_token %}
+        <input id = "email_id" type = "email" name = "email_id" placeholder="your@email.com">
+        <button type="submit" value = "Subscribe" id = "email_submit">Subscribe</button>
+     </form>
+</div>
+    {% endblock footer %}
+  </div>
+{# {% include "js_script.js" %} #}
+<script type="text/javascript">
+$('#subscribe').submit(function(e){
+      e.preventDefault();
+      var email_id = $("#email_id").val();
+      if(email_id){
+        var csrfmiddlewaretoken = csrftoken;
+        var email_data = {"email_id": email_id,
+                          "csrfmiddlewaretoken" : csrfmiddlewaretoken};
+        $.ajax({
+          type : 'POST',
+          url :  '/subscribe/',
+          data : email_data,
+          success : function(response){
+            $('#email_id').val('');
+            if(response.status == "404"){
+              alert("This Email is already been subscribed!");
+            }
+            else{
+              alert("Thank you for Subscribing! Please Check your Email to Confirm the Subscription");
+            }
+          },
+          error: function(response) {
+            alert("Sorry Something went Wrong");
+            $('#email_id').val('');
+          }
+        });
+        return false;
+      }
+      else{
+        alert("Please provide correct email!");
+      }
+  });
+
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+function csrfSafeMethod(method) {
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+})
+</script>
+</body>
+</html>
