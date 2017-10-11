@@ -15,13 +15,17 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Access configparser to load variable values
+from django.utils.six.moves import configparser
+config = configparser.SafeConfigParser(allow_no_value=True)
+config.read(os.path.join(BASE_DIR, 'setup/preprod_setting.cfg'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'myezd*$0^ktp*0c9cw8r6^ph4r5)#bpc3g0nx!zdt@58@dek7)'
 
+SECRET_KEY = config.get('security', 'SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -87,12 +91,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': config.get('databases', 'ENGINE'),
+        'NAME': config.get('databases', 'NAME'),
+        'USER': config.get('databases', 'USER'),
+        'PASSWORD': config.get('databases', 'PASSWORD'),
+        'HOST': config.get('databases', 'HOST'),
+        'PORT': config.get('databases', 'PORT'),
     }
 }
 
@@ -136,10 +140,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 if DEBUG:
     MEDIA_URL = '/media/'
-    STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static","static-only")
-    MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static","media")
+    STATIC_ROOT = os.path.join(BASE_DIR,"static","static-only")
+    MEDIA_ROOT = os.path.join(BASE_DIR,"static","media")
     STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(BASE_DIR),"static","static"),
+    os.path.join(BASE_DIR,"static","static"),
     )
 
 
@@ -167,14 +171,14 @@ LOGIN_REDIRECT_URL = '/thank-you'
 
 
 #GMAIL basic setup
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = "youremail@gmail.com"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "ouroboros.sender@gmail.com"
-EMAIL_HOST_PASSWORD = '7a8z9eValentin'
+EMAIL_BACKEND = config.get('mail', 'EMAIL_BACKEND')
+DEFAULT_FROM_EMAIL = config.get('mail', 'DEFAULT_FROM_EMAIL')
+EMAIL_HOST = config.get('mail', 'EMAIL_HOST')
+EMAIL_HOST_USER = config.get('mail', 'EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config.get('mail', 'EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 # CUSTOM : Django-Mailchimp Setup part
-MAILCHIMP_API_KEY = '311f940da2ca39de8c0df2d18bc9488c-us16'
-MAILCHIMP_SUBSCRIBE_LIST_ID = '589c28424a'
+MAILCHIMP_API_KEY = config.get('security', 'MAILCHIMP_API_KEY')
+MAILCHIMP_SUBSCRIBE_LIST_ID = config.get('security', 'MAILCHIMP_SUBSCRIBE_LIST_ID')

@@ -7,3 +7,5 @@ env/*
 .env/*
 *.orig
 .cache
+setup/*
+static/static-only/*
