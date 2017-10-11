@@ -5,6 +5,14 @@
 
 
 <head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PGMDFPT');</script>
+<!-- End Google Tag Manager -->
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,6 +41,14 @@
   <title>Storytale</title>
 </head>
 <body>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PGMDFPT');</script>
+  <!-- End Google Tag Manager -->
+  
   <div>
     {% block menu %}
     {% endblock %}
@@ -44,75 +60,7 @@
   </div>
   <div id = "footer">
     {% block footer %}
-    <div class = "subscribe_form">
-    <p>Sign up for our newsletter to get latest updates</p>
-    <form id = "subscribe" form method = 'POST'>{% csrf_token %}
-        <input id = "email_id" type = "email" name = "email_id" placeholder="your@email.com">
-        <button type="submit" value = "Subscribe" id = "email_submit">Subscribe</button>
-     </form>
-</div>
     {% endblock footer %}
   </div>
-{# {% include "js_script.js" %} #}
-<script type="text/javascript">
-$('#subscribe').submit(function(e){
-      e.preventDefault();
-      var email_id = $("#email_id").val();
-      if(email_id){
-        var csrfmiddlewaretoken = csrftoken;
-        var email_data = {"email_id": email_id,
-                          "csrfmiddlewaretoken" : csrfmiddlewaretoken};
-        $.ajax({
-          type : 'POST',
-          url :  '/subscribe/',
-          data : email_data,
-          success : function(response){
-            $('#email_id').val('');
-            if(response.status == "404"){
-              alert("This Email is already been subscribed!");
-            }
-            else{
-              alert("Thank you for Subscribing! Please Check your Email to Confirm the Subscription");
-            }
-          },
-          error: function(response) {
-            alert("Sorry Something went Wrong");
-            $('#email_id').val('');
-          }
-        });
-        return false;
-      }
-      else{
-        alert("Please provide correct email!");
-      }
-  });
-
-  function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-
-function csrfSafeMethod(method) {
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-$.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
-    }
-})
-</script>
 </body>
 </html>
