@@ -27,4 +27,4 @@ urlpatterns = [
     url(r'^subscribe/', subscribe, name = "subscribe"),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/mailchimp/', include('mailchimp.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

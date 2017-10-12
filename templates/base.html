@@ -1,4 +1,6 @@
-{% load i18n static %}<!DOCTYPE html>
+{% load i18n static %}
+{% load staticfiles %}
+<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
@@ -20,20 +22,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="description" content="">
 
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <link href="{{ STATIC_URL }}static/css/bootstrap.css" rel="stylesheet">
-  {% load staticfiles %}
+
+  <link href={% static "css/bootstrap.css" %} rel="stylesheet">
   {# global custom css files #}
-    <link href="{{ STATIC_URL }} static/css/bootstrap-social.css" rel="stylesheet">
+    <link href={% static "css/bootstrap-social.css" %} rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="{{ STATIC_URL }} static/css/font-awesome.min.css" rel="stylesheet">
+    <link href={% static "css/font-awesome.min.css" %} rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
   {% block extrastyle %}
-  <link href="{{ STATIC_URL }} static/css/custom-template.css" rel="stylesheet">
+  <link href={% static "css/custom-template.css" %} rel="stylesheet">
     {# Load the extra css files #}
   {% endblock %}
 
@@ -74,7 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <span class="copyright">Copyright &copy; Your Website 2017</span>
+            <span class="copyright">Copyright &copy; Your Website 2017 {{ STATIC_URL }}</span>
           </div>
           <div class="col-md-4">
             <ul class="list-inline social-buttons">
@@ -112,8 +114,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="{{ STATIC_URL }} static/js/jquery.js"></script>
-  <script src="{{ STATIC_URL }} static/js/popper.js"></script>
-  <script src="{{ STATIC_URL }} static/js/bootstrap.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <!-- Bootstrap core JavaScript -->
+
+  <script src={% static "js/jquery.js" %}></script>
+  <script src={% static "js/popper.js" %}></script>
+  <script src={% static "js/bootstrap.js" %}></script>
 </body>
 </html>

@@ -35,7 +35,6 @@ ALLOWED_HOSTS = config.get('general', 'ALLOWED_HOSTS').split(",")
 # Application definition
 
 INSTALLED_APPS = [
-    'usermanagement.apps.UsermanagementConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,13 +138,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR,"static","static-only")
-MEDIA_ROOT = os.path.join(BASE_DIR,"static","media")
-STATICFILES_DIRS = (
-os.path.join(BASE_DIR,"static","static"),
-)
-
-
+STATIC_ROOT = os.path.join(BASE_DIR,"prodstatic")
+MEDIA_ROOT = os.path.join(BASE_DIR,"prodmedia")
+STATICFILES_DIRS = [
+os.path.join(BASE_DIR,"static"),
+os.path.join(BASE_DIR,"media"),
+]
 
 SITE_ID = 1
 
