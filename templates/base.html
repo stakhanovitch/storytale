@@ -17,15 +17,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <meta name="description" content="">
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <link href="{{ STATIC_URL }}static/css/bootstrap.css" rel="stylesheet">
   {% load staticfiles %}
   {# global custom css files #}
-    <link href="{{ STATIC_URL }} static/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ STATIC_URL }} static/css/bootstrap-social.css" rel="stylesheet">
 
+    <!-- Custom fonts for this template -->
+    <link href="{{ STATIC_URL }} static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
   {% block extrastyle %}
+  <link href="{{ STATIC_URL }} static/css/custom-template.css" rel="stylesheet">
     {# Load the extra css files #}
   {% endblock %}
 
@@ -40,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   {% bootstrap_messages %}
   <title>Storytale</title>
 </head>
-<body>
+<body id="page-top">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -48,9 +56,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-PGMDFPT');</script>
   <!-- End Google Tag Manager -->
-  
+
   <div>
     {% block menu %}
+    {% include "widget/menu.html" %}
     {% endblock %}
   </div>
   <div>
@@ -60,7 +69,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
   <div id = "footer">
     {% block footer %}
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Your Website 2017</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
     {% endblock footer %}
   </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ STATIC_URL }} static/js/jquery.js"></script>
+  <script src="{{ STATIC_URL }} static/js/popper.js"></script>
+  <script src="{{ STATIC_URL }} static/js/bootstrap.js"></script>
 </body>
 </html>

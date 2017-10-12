@@ -17,6 +17,8 @@ import public
 from django.conf.urls import url, include
 from django.contrib import admin
 from public.views import HomePageView,ThankYouView, subscribe
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,4 +27,4 @@ urlpatterns = [
     url(r'^subscribe/', subscribe, name = "subscribe"),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/mailchimp/', include('mailchimp.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
