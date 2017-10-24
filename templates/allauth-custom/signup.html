@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<section id="contact">
+  <div class="row">
+    <div class="container">
+        <div class="col-lg-12 text-center">
+          <h1 class="section-heading">{% trans "Sign Up" %}</h1>
+        </div>
+        {% comment %}
+        waiting full site to be live for sign-in
+        <h2 class="section-subheading text-muted">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</h2>
+        {% endcomment %}
+
+        <form class="signup" id="signup_form" method="post" action="{% url 'thankyou' %}">
+          {% crispy form %}
+          {% comment %}
+          <div class="col-lg-12 text-center">
+            <button type="submit" class="btn btn-xl">{% trans "Sign Up" %} &raquo;</button>
+          </div>
+          {% endcomment %}
+        </form>
+
+      </div>
+    </div>
+  </section>
+{% endblock %}

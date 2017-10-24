@@ -165,7 +165,7 @@ ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 SOCIALACCOUNT_QUERY_EMAIL = ACCOUNT_EMAIL_REQUIRED
 #Since users don't have account on the landing page, sign up redirect to thank you page
 LOGIN_REDIRECT_URL = '/thank-you'
-
+ACCOUNT_FORMS = {'signup': 'public.forms.MySignupForm'}
 
 #GMAIL basic setup
 EMAIL_BACKEND = config.get('mail', 'EMAIL_BACKEND')

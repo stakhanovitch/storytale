@@ -16,15 +16,15 @@ Including another URLconf
 import public
 from django.conf.urls import url, include
 from django.contrib import admin
-from public.views import HomePageView,ThankYouView, subscribe
+from public.views import HomePageView,ThankYouView,CustomSignUp
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$', HomePageView.as_view(), name='home'),
+    url(r'^sign-up$', CustomSignUp.as_view(), name = "signup"),
     url(r'^thank-you$', ThankYouView.as_view(), name='thankyou'),
-    url(r'^subscribe/', subscribe, name = "subscribe"),
+    url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/mailchimp/', include('mailchimp.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
