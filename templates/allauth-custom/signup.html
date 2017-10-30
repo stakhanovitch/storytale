@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load socialaccount %}
+{% load bootstrap3 %}
 {% load crispy_forms_tags %}
 {% load i18n %}
 
@@ -17,9 +18,39 @@
         <h2 class="section-subheading text-muted">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</h2>
         {% endcomment %}
 
+        {% if form.errors %}
+          <div class="alert alert-danger">
+              {% for field in form %}
+                {% for error in field.errors %}
+                        <strong>{{ error|escape }}</strong><br />
+                {% endfor %}
+            {% endfor %}
+          </div>
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form class="form-signin" enctype="multipart/form-data" action="" method = "POST">
+        {% csrf_token %}
+        <p class="text-info">
+
+        {% for field in form %}
+        {% bootstrap_field field show_label=False %}
+        {% endfor %}
+      </p>
+        {% buttons %}
+          <button type="submit" class="btn btn-primary">
+             Next
+          </button>
+        {% endbuttons %}
+        </form>
+
+        {% comment %}
         <form class="signup" id="signup_form" method="post" action="{% url 'thankyou' %}">
           {% crispy form %}
-          {% comment %}
           <div class="col-lg-12 text-center">
             <button type="submit" class="btn btn-xl">{% trans "Sign Up" %} &raquo;</button>
           </div>

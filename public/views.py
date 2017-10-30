@@ -29,5 +29,4 @@ class CustomSignUp(SignupView):
     """
     Custom signup view from Allauth
     """
-
     template_name = "allauth-custom/signup.html"
