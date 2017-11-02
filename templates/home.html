@@ -1,54 +1,59 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load socialaccount %}
+{% load bootstrap3 %}
+{% load i18n %}
 
 {% block content %}
 <!-- Header -->
 <header class="masthead">
   <div class="container">
-    <div class="intro-text">
-      <div class="intro-lead-in">Welcome To Our Studio!</div>
-      <div class="intro-heading">It's Nice To Meet You</div>
-      <a class="btn btn-xl js-scroll-trigger" href={% url "signup" %}>Tell Me More</a>
+  <div class="row">
+    <!-- value prop -->
+    <div class="col-lg-8 ">
+      <div class="intro-text ">
+        <div class="intro-heading">It's Nice To Meet You</div>
+        <div class="intro-lead-in">Welcome To Our Studio!</div>
+      </div>
     </div>
-  </div>
-</header>
+    <!-- Signup -->
+    <div class=" col-lg-4 justify-content-lg-center">
+      <div class="align-self-center">
+        <div class="card">
+          <h4 class='card-header'>{% trans "Sign Up" %}</h1>
+            {% if form.errors %}
+              <div class="alert alert-danger">
+                  {% for field in form %}
+                    {% for error in field.errors %}
+                            <strong>{{ error|escape }}</strong><br />
+                    {% endfor %}
+                {% endfor %}
+              </div>
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class ='col-lg-12 align-self-center '>
+            <form class="form-signin" enctype="multipart/form-data" action="" method = "POST">
+            {% csrf_token %}
+            <p class="text-info">
 
-<!-- Services -->
-<section id="services">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Services</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            {% for field in form %}
+            {% bootstrap_field field show_label=False %}
+            {% endfor %}
+          </p>
+            {% buttons %}
+              <button type="submit" class="btn btn-primary">
+                 Next
+              </button>
+            {% endbuttons %}
+            </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row text-center">
-      <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-          <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-        </span>
-        <h4 class="service-heading">E-Commerce</h4>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-      </div>
-      <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-          <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-        </span>
-        <h4 class="service-heading">Responsive Design</h4>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-      </div>
-      <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-          <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-        </span>
-        <h4 class="service-heading">Web Security</h4>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-      </div>
-    </div>
-  </div>
-</section>
+</header>
 {% endblock content %}
