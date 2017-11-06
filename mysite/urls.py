@@ -26,4 +26,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/mailchimp/', include('mailchimp.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+#  06/11 commit : No need for media right now
+#static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) +
