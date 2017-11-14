@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.views.generic.base import TemplateView
 from allauth.account.views import SignupView
-from public.forms import MySignupForm
+from public.forms import CustomSignUpForm
 from django.shortcuts import render
 from django.shortcuts import render
 
@@ -29,4 +29,5 @@ class CustomSignUp(SignupView):
     """
     Custom signup view from Allauth
     """
+    form = CustomSignUpForm
     template_name = "allauth-custom/signup.html"

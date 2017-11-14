@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
+    url(r'^sign-up$', CustomSignUp.as_view(), name='signup'),
     url(r'^thank-you$', ThankYouView.as_view(), name='thankyou'),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),

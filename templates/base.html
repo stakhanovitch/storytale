@@ -1,5 +1,6 @@
 {% load i18n static %}
 {% load staticfiles %}
+{% load bootstrap3 %}
 <!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <!DOCTYPE html>
@@ -20,31 +21,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta name="description" content="">
-
+  {% block extrahead %}
+      <link rel="apple-touch-icon" sizes="180x180" href="{% static '/image/favicons/apple-touch-icon.png' %}">
+      <link rel="icon" type="image/png" sizes="32x32" href="{% static '/image/favicons/favicon-32x32.png' %}">
+      <link rel="icon" type="image/png" sizes="16x16" href="{% static '/image/favicons/favicon-16x16.png' %}">
+      <link rel="manifest" href="{% static '/image/favicons/manifest.json' %}">
+      <link rel="mask-icon" href="{% static '/image/favicons/safari-pinned-tab.svg' %}" color="#5bbad5">
+      <meta name="theme-color" content="#ffffff">
+  {% endblock %}
   <!-- Include all compiled plugins (below), or include individual files as needed -->
 
-  <link href={% static "css/bootstrap.css" %} rel="stylesheet">
   {# global custom css files #}
-    <link href={% static "css/bootstrap-social.css" %} rel="stylesheet">
+    <link href={% static "css/bootstrap.css" %} rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href={% static "css/font-awesome.min.css" %} rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+      <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
   {% block extrastyle %}
-  <link href={% static "css/custom-template.css" %} rel="stylesheet">
+    <link href={% static "css/bootstrap-social.css" %} rel="stylesheet">
+    <link href={% static "css/font-awesome.min.css" %} rel="stylesheet">
+    <link href={% static "css/custom-template.css" %} rel="stylesheet">
     {# Load the extra css files #}
   {% endblock %}
 
   {% block blockbots %}
   {% endblock %}
-  {% load bootstrap3 %}
-
-  {# Load CSS and JavaScript #}
-  {% bootstrap_javascript %}
 
   {# Display django.contrib.messages as Bootstrap alerts #}
   {% bootstrap_messages %}
@@ -61,7 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <div>
     {% block menu %}
-    {% include "widget/menu.html" %}
+      {% include "widget/menu.html" %}
     {% endblock %}
   </div>
   <div>
@@ -71,45 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
   <div id = "footer">
     {% block footer %}
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <span class="copyright">Copyright &copy; Your Website 2017 {{ STATIC_URL }}</span>
-          </div>
-          <div class="col-md-4">
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-facebook"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-linkedin"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <ul class="list-inline quicklinks">
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+      {% include "widget/footer.html" %}
     {% endblock footer %}
   </div>
 

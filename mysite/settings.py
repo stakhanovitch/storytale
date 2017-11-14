@@ -27,7 +27,7 @@ config.read(os.path.join(BASE_DIR, 'setup/preprod_setting.cfg'))
 
 SECRET_KEY = config.get('security', 'SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config.get('general', 'DEBUG')
+DEBUG = config.getboolean('general', 'DEBUG')
 
 ALLOWED_HOSTS = config.get('general', 'ALLOWED_HOSTS').split(",")
 
@@ -165,7 +165,7 @@ ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 SOCIALACCOUNT_QUERY_EMAIL = ACCOUNT_EMAIL_REQUIRED
 #Since users don't have account on the landing page, sign up redirect to thank you page
 LOGIN_REDIRECT_URL = '/thank-you'
-#ACCOUNT_FORMS = {'signup': 'public.forms.MySignupForm'}
+ACCOUNT_FORMS = {'signup': 'public.forms.CustomSignUpForm'}
 
 #GMAIL basic setup
 EMAIL_BACKEND = config.get('mail', 'EMAIL_BACKEND')

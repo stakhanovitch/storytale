@@ -8,4 +8,5 @@ env/*
 *.orig
 .cache
 setup/*
-static/static-only/*
+static/scss/*
+prodstatic/*
