@@ -35,6 +35,6 @@ class CustomLoginForm(LoginForm):
         self.helper.form_method = 'post'
         self.helper.form_action = reverse('login')
         # and then the rest as usual:
-        self.helper.form_show_errors = True
+        #self.helper.form_show_errors = True
         self.helper.form_show_labels = False
         self.helper.add_input(Submit('Log in', 'log in'))

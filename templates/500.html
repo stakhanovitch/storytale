@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load bootstrap3 %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block menu %}{% endblock %}
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<section id="masthead">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="section-heading">Hmmm, le système de règle n'avait pas prévu ce cas la...</h1>
+          <p>Tel un joueur retors, vous avez trouvé une faille dans la machine. <br/>
+            Nos administrateurs vont regarder ce que vous avez trouvé et corriger ça au plus vite.<br/>
+            En attendant, vous devriez:
+          </p>
+          <a href ={%url 'home'%} class='btn btn-primary'>Retourner à l'accueil</a>
+    </div>
+  </section>
+{% endblock %}

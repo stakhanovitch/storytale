@@ -138,9 +138,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR,"static")
+STATIC_ROOT = os.path.join(BASE_DIR,"prodstatic")
 #MEDIA_ROOT = os.path.join(BASE_DIR,"prodmedia")
-
+STATICFILES_DIRS = [
+os.path.join(BASE_DIR,"static"),
+#os.path.join(BASE_DIR,"media"),
+]
 SITE_ID = 1
 
 # CUSTOM : Crispforms Setup part
@@ -164,6 +167,7 @@ LOGIN_REDIRECT_URL = '/thank-you'
 ACCOUNT_FORMS = {
     'signup': 'public.forms.CustomSignUpForm',
     'login': 'public.forms.CustomLoginForm'}
+
 LOGIN_URL = 'login'
 #GMAIL basic setup
 EMAIL_BACKEND = config.get('mail', 'EMAIL_BACKEND')
@@ -177,3 +181,7 @@ EMAIL_USE_TLS = True
 # CUSTOM : Django-Mailchimp Setup part
 MAILCHIMP_API_KEY = config.get('security', 'MAILCHIMP_API_KEY')
 MAILCHIMP_SUBSCRIBE_LIST_ID = config.get('security', 'MAILCHIMP_SUBSCRIBE_LIST_ID')
+
+
+#SYSTEM ERROR
+ADMINS = config.get('security', 'ADMINS')

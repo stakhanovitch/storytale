@@ -5,21 +5,18 @@
 {% load i18n %}
 
 {% block menu %}{% endblock %}
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% endblock %}
 
 {% block content %}
-<section id="contact">
-  <div class="row">
+<section id="masthead">
     <div class="container">
+      <div class="row">
         <div class="col-lg-12 text-center">
-          <h1 class="section-heading">404</h1>
-        </div>
+          <h1 class="section-heading">404, Votre MJ vous avez prévenu!</h1>
+          <p> Vous trouvez cela étrange, mais il n'y a rien de ce coté là, vous devriez : </p>
 
-        {% crispy form %}
+        <a href ={%url 'home'%} class='btn btn-primary'>Retourner à l'accueil</a>
 
-
-
-      </div>
     </div>
   </section>
 {% endblock %}
