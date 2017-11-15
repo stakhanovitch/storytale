@@ -1,6 +1,6 @@
 body {
   overflow-x: hidden;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif; }
 
 p {
   line-height: 1.75; }
@@ -20,7 +20,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  font-family: Helvetica, Arial, sans-serif; }
+  font-family: 'Muli', Helvetica, Arial, sans-serif; }
 
 section {
   padding: 100px 0; }
@@ -34,14 +34,14 @@ section {
     font-style: italic;
     margin-bottom: 75px;
     text-transform: none;
-    font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    font-family: 'Droid Serif', Helvetica, Arial, sans-serif; }
 
 @media (min-width: 768px) {
   section {
     padding: 150px 0; } }
 
 .btn {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Muli', Helvetica, Arial, sans-serif;
   font-weight: 700; }
 
 .btn-xl {
@@ -85,6 +85,7 @@ body {
 
 .nav-link {
   font-weight: 500;
+  font-family: 'Muli', Helvetica, Arial, sans-serif;
   color: #020202 !important; }
   .nav-link:hover {
     color: #020202 !important; }
@@ -119,17 +120,16 @@ header.masthead {
   header.masthead .intro-text .intro-lead-in {
     color: white;
     font-size: 22px;
-    font-style: italic;
     line-height: 22px;
     margin-bottom: 25px;
-    font-family: Helvetica, Arial, sans-serif; }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; }
   header.masthead .intro-text .intro-heading {
     color: white;
     font-size: 50px;
     font-weight: 700;
     line-height: 50px;
     margin-bottom: 25px;
-    font-family: Helvetica, Arial, sans-serif; }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; }
 
 @media (min-width: 768px) {
   header.masthead .intro-text .intro-lead-in {
@@ -138,14 +138,14 @@ header.masthead {
     font-style: none;
     line-height: 30px;
     margin-bottom: 25px;
-    font-family: Helvetica, Arial, sans-serif; }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; }
   header.masthead .intro-text .intro-heading {
     color: white;
     font-size: 50px;
     font-weight: 700;
     line-height: 50px;
     margin-bottom: 50px;
-    font-family: Helvetica, Arial, sans-serif; } }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; } }
 
 .service-heading {
   margin: 15px 0;
@@ -199,7 +199,7 @@ header.masthead {
       font-size: 16px;
       font-style: italic;
       margin: 0;
-      font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+      font-family: 'Droid Serif', Helvetica, Arial, sans-serif; }
 
 #portfolio * {
   z-index: 2; }
@@ -225,7 +225,7 @@ header.masthead {
       font-size: 16px;
       font-style: italic;
       margin: 20px 0 30px;
-      font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+      font-family: 'Droid Serif', Helvetica, Arial, sans-serif; }
     .portfolio-modal .modal-content ul.list-inline {
       margin-top: 0;
       margin-bottom: 30px; }
@@ -436,21 +436,21 @@ section#contact {
   section#contact ::-webkit-input-placeholder {
     font-weight: 700;
     color: #ced4da;
-    font-family: Helvetica, Arial, sans-serif; }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; }
   section#contact :-moz-placeholder {
     font-weight: 700;
     color: #ced4da;
     /* Firefox 18- */
-    font-family: Helvetica, Arial, sans-serif; }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; }
   section#contact ::-moz-placeholder {
     font-weight: 700;
     color: #ced4da;
     /* Firefox 19+ */
-    font-family: Helvetica, Arial, sans-serif; }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; }
   section#contact :-ms-input-placeholder {
     font-weight: 700;
     color: #ced4da;
-    font-family: Helvetica, Arial, sans-serif; }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; }
 
 footer {
   padding: 25px 0;
@@ -459,13 +459,13 @@ footer {
     font-size: 90%;
     line-height: 40px;
     text-transform: none;
-    font-family: Helvetica, Arial, sans-serif; }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; }
   footer ul.quicklinks {
     font-size: 90%;
     line-height: 40px;
     margin-bottom: 0;
     text-transform: none;
-    font-family: Helvetica, Arial, sans-serif; }
+    font-family: 'Muli', Helvetica, Arial, sans-serif; }
 
 ul.social-buttons {
   margin-bottom: 0; }
