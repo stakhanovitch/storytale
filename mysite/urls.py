@@ -19,16 +19,19 @@ from django.contrib import admin
 from public.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from allauth.account.views import EmailVerificationSentView
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^sign-up$', CustomSignUp.as_view(), name='signup'),
     url(r'^log-in$', CustomLogin.as_view(), name='login'),
     url(r'^log-out$', CustomLogout.as_view(), name='logout'),
+    url(r'^email-verification$', EmailVerificationSentView.as_view(), name='emailverification'),
     url(r'^thank-you$', ThankYouView.as_view(), name='thankyou'),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/mailchimp/', include('mailchimp.urls')),
+     #url(r'^contact/$', public.views.contact, name='contact'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 #  06/11 commit : No need for media right now

@@ -4,30 +4,17 @@
 {% load crispy_forms_tags %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{{title}}{% endblock %}
 
 {% block content %}
 <section id='masthead'>
 <div class="container ">
 <div class="row justify-content-center">
     <div class="card col-6">
-      <div class="card-body">
+      <div class="card-body text-center">
         <h4 class="card-title">{{title}}</h4>
          <p >{{help_text}}</p>
-         {% if form.errors %}
-           <div class="alert alert-danger">
-               {% for field in form %}
-                 {% for error in field.errors %}
-                         <strong>{{ error|escape }}</strong><br />
-                 {% endfor %}
-             {% endfor %}
-           </div>
-             {% for error in form.non_field_errors %}
-                 <div class="alert alert-danger">
-                     <strong>{{ error|escape }}</strong>
-                 </div>
-             {% endfor %}
-         {% endif %}
+         {{redirect_field_value}}
          {% crispy form %}
       </div>
   </div>

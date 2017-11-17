@@ -1,0 +1,20 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Votre inscription a bien été prise en compte.{% endblock %}
+
+{% block content %}
+<section id='masthead'>
+<div class="container ">
+<div class="row justify-content-center">
+  <div class="col-lg-12 text-center">
+    <h1>Votre inscription a bien été prise en compte.</h1>
+  </div>
+  <h2 class="section-subheading text-muted text-center">
+    {% blocktrans %}Un email vient de vous être envoyé,<br/>  Suivez le lien pour finaliser votre inscription.{% endblocktrans %}
+  </h2>
+</div>
+</div>
+</section>
+{% endblock %}

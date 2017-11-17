@@ -69,7 +69,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates/'),],
+        'DIRS': [os.path.join(BASE_DIR,'templates/'),os.path.join(BASE_DIR, 'templates', 'allauth'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -169,6 +169,12 @@ ACCOUNT_FORMS = {
     'login': 'public.forms.CustomLoginForm'}
 
 LOGIN_URL = 'login'
+
+ACCOUNT_EMAIL_VERIFICATION ='optional'
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = 'True'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = 'True'
+ACCOUNT_EMAIL_SUBJECT_PREFIX =''
+
 #GMAIL basic setup
 EMAIL_BACKEND = config.get('mail', 'EMAIL_BACKEND')
 DEFAULT_FROM_EMAIL = config.get('mail', 'DEFAULT_FROM_EMAIL')
