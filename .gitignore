@@ -7,6 +7,6 @@ env/*
 .env/*
 *.orig
 .cache
+
 setup/*
-static/scss/*
-prodstatic/*
+dev-static/*

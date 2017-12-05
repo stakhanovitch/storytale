@@ -1,0 +1,39 @@
+@media (min-width: 992px) {
+	#navbarResponsive{
+		padding-top: 10px;
+	}
+}
+.nav-link{	
+		font-weight: 500;
+		
+		@include heading-font;
+		color : $primary !important;
+		&:hover {
+		color: $gray-900 !important;
+	}
+}
+body {
+  padding-top: 54px;
+  a.main-menu{
+	.navbar-nav .nav-link{
+		color : $primary !important;
+		&:hover {
+		color: $gray-900 !important;
+	}
+	}
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+  a.main-menu{
+	.navbar-nav .nav-link{
+		color : $primary;
+		&:hover {
+		color: $gray-900;
+		}
+	}
+  }
+}

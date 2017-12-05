@@ -1,0 +1,50 @@
+{% extends "public/base.html" %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+<section class="bg-light" id="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 ">
+        <h1 >{{workshop.title}}</h1>
+      </div>
+      <div class="col-lg-4">
+        {% block form %}
+        <form class="form-signin" action="" method = "POST">
+          {% csrf_token %}
+
+        {% bootstrap_form form %}
+          {% buttons %}
+            <button type="submit" class="btn btn-primary">
+               Je m'inscris
+            </button>
+          {% endbuttons %}
+          </form>
+        {% endblock form %}
+      </div>
+      <div class="col-lg-12">
+      <h2 class='text-muted '>{{workshop.subtitle}}</h2>
+      <hr/>
+      {% bootstrap_messages %}
+      <div class='metatag text-center'>
+        <div class="align-text-bottom">
+          <i class = "fa fa-clock-o"></i> <h4 class="tag">{{workshop.start_time|date:"H:i"}} - {{workshop.end_time|date:"H:i"}} ({{workshop.duration}})</h3>
+          <i class = "fa fa-map-marker"></i> <h4 class="tag">{{workshop.location}}</h3>
+          <i class = "fa fa-group"></i> <h4 class="tag">{{workshop.max_attendance}}</h3>
+        </div>
+      </div>
+      <hr/>
+        <p class="section-subheading">
+          {{workshop.description}}
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}
