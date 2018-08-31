@@ -19,6 +19,7 @@ class WorkshopRegistrationView(CreateView):
         else:
             form_class = CustomSignupForm
         return form_class
+        self.fail('message')
     def get_context_data(self, **kwargs):
         context = super(WorkshopRegistrationView, self).get_context_data(**kwargs)
         context.update({'workshop': Workshop.objects.get(slug = self.kwargs['slug']),})
