@@ -37,11 +37,12 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/mailchimp/', include('mailchimp.urls')),
      #url(r'^contact/$', public.views.contact, name='contact'),
-     url(r'^workshop/', include('public.urls')),
-     ] 
+     url(r'^ateliers/', include('public.urls')),
+     ]
 
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 #  06/11 commit : No need for media right now
 #static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) +

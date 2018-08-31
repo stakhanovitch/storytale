@@ -8,40 +8,13 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav main-menu mr-auto">
-        {% comment %}
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-        </li>
-        {% endcomment %}
+    <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarResponsive">
+      <ul class="navbar-nav main-menu ">
+          <a class="btn btn-block btn-social btn-facebook" alt="facebook" href="https://www.facebook.com/StorytaleRoleplay/" role="button"><span class="fa fa-facebook"></span> Suivez-nous</a> &nbsp
+          <a class="btn btn-outline-secondary" alt="contact" href="#" role="button"><span class="fa fa-envelope"></span></a>
+
       </ul>
-      {%if request.user.is_authenticated %}
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Bonjour {{user.username}}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           {% comment %}<a class="dropdown-item" href="#">Another action</a>{% endcomment %}
-           <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
-          </div>
-        </li>
-      </ul>
-      {% else %}
-        <a class="btn btn-outline-primary" href="{% url 'login'%}">Identifiez-vous</a>
-      {% endif %}
+
     </div>
   </div>
 </nav>

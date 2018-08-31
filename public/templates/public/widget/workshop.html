@@ -1,0 +1,24 @@
+<div class="col-xs-12 col-sm-6">
+  <div class="card">
+    <img class="card-img-top" src="{{workshop.image.url}}" alt="Card image cap">
+    <div class="card-header">
+      <div class="row">
+    <div class="col-sm-6">
+      <i class = "fa fa-clock-o"></i> {{workshop.start_time|date:"d"}} {{workshop.start_time|date:"M"}} - {{workshop.start_time|date:"H:i"}}
+    </div>
+     <div class="col-sm-6 text-right">
+        {{workshop.printed_price}}
+    </div>
+  </div>
+</div>
+    <div class="card-body text-center">
+      <h5 class="card-title">{{workshop.title}}</h5>
+      <p class="card-text">{{workshop.description|truncatechars:150}}</p>
+
+      <a href="{{workshop.signup_url}}" class="btn btn-primary">En savoir plus </a>
+    </div>
+    <div class="card-footer text-muted">
+      <p class="card-text text-center"><small class="text-muted"><i class = "fa fa-map-marker"></i> {{workshop.location.name}}, {{workshop.location.address}} {{workshop.location.post_code}} {{workshop.location.town}}</small></p>
+    </div>
+  </div>
+</div>
