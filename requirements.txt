@@ -9,7 +9,7 @@ django-mailchimp-v1.3==1.4.0
 idna==2.6
 oauthlib==2.0.4
 pbr==3.1.1
-Pillow==5.2.0
+Pillow==9.0.1
 psycopg2==2.7.3.1
 python-openid==2.2.5
 pytz==2017.2
